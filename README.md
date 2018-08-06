@@ -1,9 +1,7 @@
 1. As a test subject, I want to see three images, so I can click on one and choose the one I like.
-In html file:
-* Create a a form template and a results template.
+* In html file, create a a form template and a results template.
 * Create a form that has 3 radio buttons and a vote button (later change to a onselect option)
-In Javascript file:
-* Keep track of total clicks with variable totalClicks.
+* In Javascript file, keep track of total clicks with variable totalClicks.
 * Create a class called image that has the properties key, filename, numSelected, numViewed, viewedLastTime. 
 * Create an array containing the class instances in which viewedLastTime = false.
 * Randomly select three from that array.
