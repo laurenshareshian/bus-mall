@@ -1,4 +1,3 @@
-/* global createHourlyInfo */
 'use strict';
 
 (function(module) {
@@ -20,12 +19,13 @@
         `;
     };
 
-    class StoreForm {
+    class ProductForm {
         constructor(props) {
-            this.onAdd = props.onAdd;
+            this.onSubmit = props.onSubmit;
         }
 
         render() {
+
             let dom = template();
 
             let form = dom.querySelector('form');
@@ -39,19 +39,12 @@
                 // #2 Gather up data
                 let elements = form.elements;
 
-                let store = {
-                    location: elements.location.value,
-                    max_cust: elements.max.value,
-                    min_cust: elements.min.value,
-                    avg_cookies: elements.avg.value,
-                    key: elements.location.value
-                };
-                // give the store hourly cookie values
-                store = createHourlyInfo(store);
+                let productChosen = elements.location.value;
+                console.log(productChosen);
 
                 // #3 Call action
                 try {
-                    this.onAdd(store);
+                    //this.onAdd(store);
                     // #4 Process success or failure
                     form.reset();
                     document.activeElement.blur();
@@ -68,6 +61,6 @@
         }
     }
 
-    module.StoreForm = StoreForm;
+    module.ProductForm = ProductForm;
 
 })(window.module = window.module || {});
