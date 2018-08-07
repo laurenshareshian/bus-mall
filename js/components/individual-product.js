@@ -6,14 +6,9 @@
     let template = function(product) {
         let label = product.name;
         let filename = product.filename;
-        let rowstring = '<div><label> <input type=\'radio\' name = \'image\' value=\'';
-        rowstring += label;
-        rowstring += '\'> <img src = \'';
-        rowstring += filename;
-        rowstring += '\' alt = \'';
-        rowstring += label;
-        rowstring += ' \' width = \'200\'> </label> </div>';
-        return html `${rowstring}`;
+        return html`<div>
+        <label> <input type='radio' name = 'image' value='${label}'> <img src = '${filename}' alt = 'bag' width = '200'> </label>  
+        </div>`;
     };
 
     class IndividualProduct {

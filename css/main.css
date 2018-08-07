@@ -18,7 +18,7 @@ figcaption {
     font-size: 90%;
     text-align: left;}
 
-.flex-choice-box {
+.flex-box-choices {
     display: flex;
     justify-content: space-evenly;
     }

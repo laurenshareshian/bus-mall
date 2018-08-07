@@ -5,13 +5,12 @@
 
     // form structure
     let template = function() {
-        let rowstring = '<section id=\'survey\'> <h2>Choose a product! </h2>';
-        rowstring += '<form id=\'guess-form\' >';
-        rowstring += '<br> <div class = \'button-container\'><button id = \'submit\' type=\'submit\'>';
-        rowstring += 'Vote </button></div></form></section>';
-        rowstring += '<p id = \'form-error\' class=\'error\'></p>';
-        rowstring += '<p id = \'total-clicks\' class=\'total-clicks\'></p';
-        return html `${rowstring}`;
+        return html`
+        <form id='guess-form' >
+            <div class = 'button-container'>
+                <button id = 'submit' type='submit'> Vote </button>
+            </div>
+        </form>`;
     };
 
     class ProductForm {

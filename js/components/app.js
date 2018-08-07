@@ -12,7 +12,9 @@
         <header>
             <h1> Market Research </h1>
         </header>   
+        <section id='take-survey'>
         <main></main>
+        </section>
         `;
     };
 

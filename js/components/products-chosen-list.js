@@ -6,10 +6,7 @@
 
     // create the flex box that puts the three images side by side
     let template = function() {
-        let rowstring = '<div class = \'flex-choice-box\'> ';
-        rowstring += '</div> <br>';
-
-        return html `${rowstring}`;
+        return html`<div class = 'flex-box-choices'><br></div>`;
     };
 
     // takes in three products to display and renders them
@@ -27,7 +24,7 @@
 
             // remove all data from view
             for(let i = 0; i < 3; i++) {
-                this.choice.children[i].remove();
+                this.flexBoxChoices.children[i].remove();
             }
 
             //view three new products
@@ -40,14 +37,14 @@
             let individualProduct = new IndividualProduct({
                 product: product,
             });
-            this.choice.appendChild(individualProduct.render());
+            this.flexBoxChoices.appendChild(individualProduct.render());
         }
 
         // when page first loads display three images
         render() {
             // create new product display
             let dom = template();
-            this.choice = dom.querySelector('div.flex-choice-box');
+            this.flexBoxChoices = dom.querySelector('div.flex-box-choices');
             let products = this.products;
 
             for(let i = 0; i < products.length; i++) {
