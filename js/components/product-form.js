@@ -2,14 +2,16 @@
 
 (function(module) {
     let html = module.html;
+    let IndividualProduct = module.IndividualProduct;
 
     // form structure
     let template = function() {
         return html`
         <form id='guess-form' >
-            <div class = 'button-container'>
-                <button id = 'submit' type='submit'> Vote </button>
-            </div>
+        <div class = 'flex-box-choices'></div>
+        <div class = 'button-container'>
+            <button id = 'submit' type='submit'> Vote </button>
+        </div>
         </form>`;
     };
 
@@ -19,13 +21,54 @@
             this.totalClicks = props.totalClicks;
             this.productsChosenList = props.productsChosenList;
             this.products = props.products;
+            this.subset = props.subset;
         }
 
+        update(props) {
+            // create new product display
+            this.products = props.products;
+            this.subset = props.subset;
+
+            // remove all data from view
+            console.log('flex box children', this.flexBoxChoices.children);
+            try {
+                while(this.flexBoxChoices.lastElementChild){
+                    this.flexBoxChoices.lastElementChild.remove();
+                }
+                // for(let i = 0; i < 3; i++) {
+                //     this.flexBoxChoices.children[i].remove();
+                // }
+            }
+            catch (err) {
+                console.log('children', this.flexBoxChoices.children);
+                console.log('problem deleting:', err.message);
+            }
+
+            //display three new products
+            for(let i = 0; i < this.subset.length; i++) {
+                this.updateProduct(this.subset[i]);
+            }
+        }
+
+        updateProduct(product) {
+            let individualProduct = new IndividualProduct({
+                product: product,
+            });
+            this.flexBoxChoices.appendChild(individualProduct.render());
+        }
         render() {
             let dom = template();
             this.form = dom.querySelector('form');
             let error = dom.querySelector('p.error');
-            this.form.appendChild(this.productsChosenList.render());
+            // this.form.appendChild(this.productsChosenList.render());
+
+            this.flexBoxChoices = dom.querySelector('div.flex-box-choices');
+            let subset = this.subset;
+            console.log('inside render in product-form', subset);
+            for(let i = 0; i < subset.length; i++) {
+                this.updateProduct(subset[i]);
+            }
+
 
             // listen for form submission
             this.form.addEventListener('submit', (event) => {

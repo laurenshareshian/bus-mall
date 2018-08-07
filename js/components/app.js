@@ -36,23 +36,20 @@
             let subset = [];
             [subset, products] = chooseThreeProducts(products);
 
-            // display these products
-            let productsChosenList = new ProductsChosenList({
-                products: subset
-            });
-
             // create submission form
             let productForm = new ProductForm({
                 products: products,
                 totalClicks: totalClicks,
-                productsChosenList: productsChosenList,
+                subset: subset,
+
                 // if form is submitted
                 onSubmit: function(products) {
-                    //randomly chose another three products and display them
+                    //randomly choose another three products and display them
                     [subset, products] = chooseThreeProducts(products);
-                    this.productsChosenList = new ProductsChosenList({
-                        products: subset
-                    });
+                    console.log('subset in form submission', subset);
+                    // this.productsChosenList = new ProductsChosenList({
+                    //     products: subset
+                    // });
                     // clear previous products
                     // while(this.form.lastElementChild) {
                     //     console.log(this.form.lastElementChild);
@@ -60,7 +57,10 @@
                     // }
 
                     // display the new products on the page
-                    this.form.appendChild(this.productsChosenList.render());
+                    productForm.update({
+                        products: products,
+                        subset: subset
+                    });
                 }
             });
 

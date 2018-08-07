@@ -6,7 +6,7 @@
 
     // create the flex box that puts the three images side by side
     let template = function() {
-        return html`<div class = 'flex-box-choices'><br></div>`;
+        return html`<div class = 'flex-box-choices'></div>`;
     };
 
     // takes in three products to display and renders them
@@ -16,18 +16,23 @@
         }
 
         // when user submits form, update display
-        update(props) {
-            let products = props.products;
-            let individualProduct = new IndividualProduct({
-                individualProduct: individualProduct,
-            });
+        update() {
+            // create new product display
+            let products = this.products;
 
             // remove all data from view
-            for(let i = 0; i < 3; i++) {
-                this.flexBoxChoices.children[i].remove();
+            console.log('flex box children', this.flexBoxChoices);
+            try {
+                for(let i = 0; i < 3; i++) {
+                    this.flexBoxChoices.children[i].remove();
+                }
+            }
+            catch (err) {
+                console.log('children', this.flexBoxChoices.children);
+                console.log('problem deleting:', err.message);
             }
 
-            //view three new products
+            //display three new products
             for(let i = 0; i < products.length; i++) {
                 this.updateProduct(products[i]);
             }
