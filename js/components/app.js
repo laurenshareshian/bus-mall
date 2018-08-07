@@ -4,8 +4,7 @@
     let html = module.html;
     let productApi = module.productApi; //loads, adds, removes products
     let ProductsChosenList = module.ProductsChosenList; //renders three products
-    // let ProductForm = module.ProductForm; //keeps track of form submissions
-    // let ProductForm = module.ProductForm; //form functionality
+    let ProductForm = module.ProductForm; //keeps track of form submissions
 
     // header of html file
     let template = function() {
@@ -24,47 +23,34 @@
             //load all products
             let products = productApi.load();
 
-            // create list of not most recently viewed items
-            let notLastViewed = [];
-            for(let i = 0; i < products.length; i++){
-                if(products[i].lastViewed === false){
-                    notLastViewed.push(products[i]);
-                }
-            }
-            //choose three items that were not last viewed
-            let subset = getRandomSubarray(notLastViewed, 3);
-            console.log(subset);
-            let indices = [];
-            for(let i = 0; i < subset.length; i++){
-                indices.push(products.indexOf(subset[i]));
-            }
+            // keep track of votes submitted
+            let totalClicks = 0;
 
-            // reset lastViewed key to clear out previously stored values
-            for(let i = 0; i < products.length; i++){
-                products[i].lastViewed = false;
-            }
+            // choose three products
+            let subset = [];
+            [subset, products] = chooseThreeProducts(products);
 
-            //update lastViewed key to store most recent ones
-            for(let i = 0; i < indices.length; i++){
-                products[indices[i]].numViews += 1;
-                products[indices[i]].lastViewed = true;
-            }
-
+            // display these products
             let productsChosenList = new ProductsChosenList({
-                products: subset,
+                products: subset
             });
 
-            // let productForm = new ProductForm({
-            //     onSubmit: function(product) {
-            //         productApi.add(product);
-            //         productList.update({
-            //             products: products
-            //         });
-            //     }
-            // });
+            // create submission form
+            let productForm = new ProductForm({
+                totalClicks: totalClicks,
+                productsChosenList: productsChosenList,
+                onSubmit: function(subset) {
+                    console.log('inside productForm in app.js');
+                    // [subset, products] = chooseThreeProducts(products);
+                    // productsChosenList.update({
+                    //     products: subset
+                    // });
+                }
+            });
+
             // adds form and table data to screen
-            main.appendChild(productsChosenList.render());
-            // main.appendChild(productForm.render());
+            main.appendChild(productForm.render());
+            // main.appendChild(productsChosenList.render());
             return dom;
         }
     }
@@ -83,4 +69,33 @@ function getRandomSubarray(arr, size) {
         shuffled[i] = temp;
     }
     return shuffled.slice(0, size);
+}
+
+function chooseThreeProducts(products) {
+    // create list of not most recently viewed items
+    let notLastViewed = [];
+    for(let i = 0; i < products.length; i++){
+        if(products[i].lastViewed === false){
+            notLastViewed.push(products[i]);
+        }
+    }
+    //choose three items that were not last viewed
+    let subset = getRandomSubarray(notLastViewed, 3);
+    console.log(subset);
+    let indices = [];
+    for(let i = 0; i < subset.length; i++){
+        indices.push(products.indexOf(subset[i]));
+    }
+
+    // reset lastViewed key to clear out previously stored values
+    for(let i = 0; i < products.length; i++){
+        products[i].lastViewed = false;
+    }
+
+    //update lastViewed key to store most recent ones
+    for(let i = 0; i < indices.length; i++){
+        products[indices[i]].numViews += 1;
+        products[indices[i]].lastViewed = true;
+    }
+    return [subset, products];
 }
