@@ -26,7 +26,6 @@
             let dom = template();
             this.form = dom.querySelector('form');
             let error = dom.querySelector('p.error');
-            let clicks = dom.querySelector('p.total-clicks');
             this.form.appendChild(this.productsChosenList.render());
 
             // listen for form submission
@@ -36,13 +35,13 @@
 
                 // #2 Gather up data
                 let elements = this.form.elements;
-
                 let productChosen = elements.image.value;
+
+                // # Update user preferences
                 console.log(productChosen);
+                this.stores = findIndexOfSelection(productChosen, this.products);
 
-                this.totalClicks += 1;
-
-                // #3 Call action
+                // #4 Call action
                 try {
                     this.onSubmit(this.products);
                     // #4 Process success or failure
@@ -55,7 +54,10 @@
                     error.textContent = err.message;
                 }
 
+                // #5 keep track of click max
+                this.totalClicks += 1;
                 if(this.totalClicks === 3){
+                    console.log(this.products);
                     alert('3 clicks!');
                 }
                 console.log('total clicks', this.totalClicks);
@@ -67,3 +69,12 @@
     module.ProductForm = ProductForm;
 
 })(window.module = window.module || {});
+
+function findIndexOfSelection(value, products){
+    for(let i = 0; i < products.length; i++){
+        if(products[i]['name'] === value) {
+            products[i]['numSelected'] += 1;
+        }
+    }
+    return products;
+}

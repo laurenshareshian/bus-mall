@@ -2,11 +2,11 @@
 (function(module) {
     let html = module.html;
 
-    // create all the rows in table
+    // create the html to display one product image
     let template = function(product) {
         let label = product.name;
         let filename = product.filename;
-        let rowstring = '<div><label> <input type=\'radio\' name = \'image\' value=\' ';
+        let rowstring = '<div><label> <input type=\'radio\' name = \'image\' value=\'';
         rowstring += label;
         rowstring += '\'> <img src = \'';
         rowstring += filename;

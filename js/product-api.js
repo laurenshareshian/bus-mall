@@ -26,7 +26,7 @@
         { name: 'wine-glass', filename: './img/wine-glass.jpg', numViews: 0, numSelected: 0, lastViewed: false }
     ];
 
-    // loads, adds, and removes products
+    // loads products
     let productApi = {
         load: function() {
             return products;

@@ -2,22 +2,26 @@
 
 (function(module) {
     let html = module.html;
-    let productApi = module.productApi; //loads, adds, removes products
+    let productApi = module.productApi; //loads products
     let ProductsChosenList = module.ProductsChosenList; //renders three products
     let ProductForm = module.ProductForm; //keeps track of form submissions
 
-    // header of html file
+    // header of html file with main tag to add things to
     let template = function() {
         return html`
-            <main></main>
+        <header>
+            <h1> Market Research </h1>
+        </header>   
+        <main></main>
         `;
     };
 
-    // prints table data to screen and checks for updates to table
+    // prints product data to screen upon page load and form submission
     class App {
         render() {
             let dom = template();
 
+            // finds where to place info inside html
             this.main = dom.querySelector('main');
 
             //load all products
@@ -26,7 +30,7 @@
             // keep track of votes submitted
             let totalClicks = 0;
 
-            // choose three products
+            // randomly choose three products not just shown
             let subset = [];
             [subset, products] = chooseThreeProducts(products);
 
@@ -40,25 +44,26 @@
                 products: products,
                 totalClicks: totalClicks,
                 productsChosenList: productsChosenList,
+                // if form is submitted
                 onSubmit: function(products) {
-
+                    //randomly chose another three products and display them
                     [subset, products] = chooseThreeProducts(products);
                     this.productsChosenList = new ProductsChosenList({
                         products: subset
                     });
-                    while(this.form.lastElementChild) {
-                        console.log(this.form.lastElementChild);
-                        this.form.lastElementChild.remove();
-                    }
+                    // clear previous products
+                    // while(this.form.lastElementChild) {
+                    //     console.log(this.form.lastElementChild);
+                    //     this.form.lastElementChild.remove();
+                    // }
 
+                    // display the new products on the page
                     this.form.appendChild(this.productsChosenList.render());
-
                 }
             });
 
-            // adds form and table data to screen
+            // adds products to screen upon page load
             this.main.appendChild(productForm.render());
-            // main.appendChild(productsChosenList.render());
             return dom;
         }
     }
