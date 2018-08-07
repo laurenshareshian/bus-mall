@@ -18,7 +18,7 @@
         render() {
             let dom = template();
 
-            let main = dom.querySelector('main');
+            this.main = dom.querySelector('main');
 
             //load all products
             let products = productApi.load();
@@ -37,19 +37,27 @@
 
             // create submission form
             let productForm = new ProductForm({
+                products: products,
                 totalClicks: totalClicks,
                 productsChosenList: productsChosenList,
-                onSubmit: function(subset) {
-                    console.log('inside productForm in app.js');
-                    // [subset, products] = chooseThreeProducts(products);
-                    // productsChosenList.update({
-                    //     products: subset
-                    // });
+                onSubmit: function(products) {
+
+                    [subset, products] = chooseThreeProducts(products);
+                    this.productsChosenList = new ProductsChosenList({
+                        products: subset
+                    });
+                    while(this.form.lastElementChild) {
+                        console.log(this.form.lastElementChild);
+                        this.form.lastElementChild.remove();
+                    }
+
+                    this.form.appendChild(this.productsChosenList.render());
+
                 }
             });
 
             // adds form and table data to screen
-            main.appendChild(productForm.render());
+            this.main.appendChild(productForm.render());
             // main.appendChild(productsChosenList.render());
             return dom;
         }
@@ -81,7 +89,7 @@ function chooseThreeProducts(products) {
     }
     //choose three items that were not last viewed
     let subset = getRandomSubarray(notLastViewed, 3);
-    console.log(subset);
+
     let indices = [];
     for(let i = 0; i < subset.length; i++){
         indices.push(products.indexOf(subset[i]));

@@ -2,7 +2,6 @@
 
 (function(module) {
     let html = module.html;
-    // let ProductsChosenList = module.ProductsChosenList;
 
     // form structure
     let template = function() {
@@ -20,16 +19,14 @@
             this.onSubmit = props.onSubmit;
             this.totalClicks = props.totalClicks;
             this.productsChosenList = props.productsChosenList;
+            this.products = props.products;
         }
 
         render() {
-            console.log('inside ProductForm render');
             let dom = template();
-
             this.form = dom.querySelector('form');
             let error = dom.querySelector('p.error');
             let clicks = dom.querySelector('p.total-clicks');
-
             this.form.appendChild(this.productsChosenList.render());
 
             // listen for form submission
@@ -43,9 +40,11 @@
                 let productChosen = elements.image.value;
                 console.log(productChosen);
 
+                this.totalClicks += 1;
+
                 // #3 Call action
                 try {
-                    //this.onSubmit(store);
+                    this.onSubmit(this.products);
                     // #4 Process success or failure
                     this.form.reset();
                     document.activeElement.blur();
@@ -57,11 +56,10 @@
                 }
 
                 if(this.totalClicks === 3){
-                    clicks.textContent = '3 clicks!';
+                    alert('3 clicks!');
                 }
-
+                console.log('total clicks', this.totalClicks);
             });
-
             return dom;
         }
     }
