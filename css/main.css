@@ -18,10 +18,11 @@ figcaption {
     font-size: 90%;
     text-align: left;}
 
- .flex-choices {
+.flex-choice-box {
     display: flex;
     justify-content: space-evenly;
-}
+    }
+
 
 /*////// D3 */
 .bar {
@@ -36,12 +37,7 @@ figcaption {
     display: none;
 }  
 
-.button {
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: center;
-    font-size: 16px;
-}
+.button-container {
+    display: flex;
+    justify-content: center;
+  }
