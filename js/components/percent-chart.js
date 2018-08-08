@@ -4,7 +4,7 @@ import html from '/js/html.js';
 
 let template = function() {
     return html`
-        <h2>Summary Chart</h2>
+        <h2>Percentage Chosen Chart</h2>
         <div class="chart-container">
             <canvas width="400"></canvas>
         </div>
