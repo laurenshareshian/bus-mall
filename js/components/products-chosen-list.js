@@ -1,64 +1,57 @@
 'use strict';
-(function(module) {
 
-    let html = module.html;
-    let IndividualProduct = module.IndividualProduct;
+import html from '../html.js';
+import IndividualProduct from './individual-product.js';
 
-    // create the flex box that puts the three images side by side
-    let template = function() {
-        return html`<div class = 'flex-box-choices'></div>`;
-    };
+// create the flex box that puts the three images side by side
+let template = function() {
+    return html`<div class = 'flex-box-choices'></div>`;
+};
 
     // takes in three products to display and renders them
-    class ProductsChosenList {
-        constructor(props) {
-            this.products = props.products; // three chosen products
-        }
+export default class ProductsChosenList {
+    constructor(props) {
+        this.products = props.products; // three chosen products
+    }
 
-        // when user submits form, update display
-        update() {
-            // create new product display
-            let products = this.products;
+    // when user submits form, update display
+    update() {
+        // create new product display
+        let products = this.products;
 
-            // remove all data from view
-            console.log('flex box children', this.flexBoxChoices);
-            try {
-                for(let i = 0; i < 3; i++) {
-                    this.flexBoxChoices.children[i].remove();
-                }
-            }
-            catch (err) {
-                console.log('children', this.flexBoxChoices.children);
-                console.log('problem deleting:', err.message);
-            }
-
-            //display three new products
-            for(let i = 0; i < products.length; i++) {
-                this.updateProduct(products[i]);
+        // remove all data from view
+        try {
+            for(let i = 0; i < 3; i++) {
+                this.flexBoxChoices.children[i].remove();
             }
         }
-
-        updateProduct(product) {
-            let individualProduct = new IndividualProduct({
-                product: product,
-            });
-            this.flexBoxChoices.appendChild(individualProduct.render());
+        catch (err) {
+            console.log('problem deleting:', err.message);
         }
 
-        // when page first loads display three images
-        render() {
-            // create new product display
-            let dom = template();
-            this.flexBoxChoices = dom.querySelector('div.flex-box-choices');
-            let products = this.products;
-
-            for(let i = 0; i < products.length; i++) {
-                this.updateProduct(products[i]);
-            }
-            return dom;
+        //display three new products
+        for(let i = 0; i < products.length; i++) {
+            this.updateProduct(products[i]);
         }
     }
 
-    module.ProductsChosenList = ProductsChosenList;
+    updateProduct(product) {
+        let individualProduct = new IndividualProduct({
+            product: product,
+        });
+        this.flexBoxChoices.appendChild(individualProduct.render());
+    }
 
-})(window.module = window.module || {});
+    // when page first loads display three images
+    render() {
+        // create new product display
+        let dom = template();
+        this.flexBoxChoices = dom.querySelector('div.flex-box-choices');
+        let products = this.products;
+
+        for(let i = 0; i < products.length; i++) {
+            this.updateProduct(products[i]);
+        }
+        return dom;
+    }
+}

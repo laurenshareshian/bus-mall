@@ -1,27 +1,22 @@
 'use strict';
-(function(module) {
-    let html = module.html;
+import html from '../html.js';
 
-    // create the html to display one product image
-    let template = function(product) {
-        let label = product.name;
-        let filename = product.filename;
-        return html`<div>
-        <label> <input type='radio' name = 'image' value='${label}'> <img src = '${filename}' alt = 'bag' width = '200'> </label>  
-        </div>`;
-    };
+// create the html to display one product image
+let template = function(product) {
+    let label = product.name;
+    let filename = product.filename;
+    return html`<div>
+    <label> <input type='radio' name = 'image' value='${label}'> <img src = '${filename}' alt = 'bag' width = '200'> </label>  
+    </div>`;
+};
 
-    class IndividualProduct {
-        constructor(props) {
-            this.product = props.product;
-        }
-
-        render() {
-            let dom = template(this.product);
-            return dom;
-        }
+export default class IndividualProduct {
+    constructor(props) {
+        this.product = props.product;
     }
 
-    module.IndividualProduct = IndividualProduct;
-
-})(window.module = window.module || {});
+    render() {
+        let dom = template(this.product);
+        return dom;
+    }
+}
