@@ -1,8 +1,7 @@
 'use strict';
 import html from '../html.js';
 import IndividualProduct from './individual-product.js';
-import ViewsChart from './views-chart.js';
-import PercentChart from './percent-chart.js';
+import ProductTable from './summary-table.js';
 
 // form structure
 let template = function() {
@@ -93,23 +92,20 @@ export default class ProductForm {
 
             // if total clicks is over 25 display summary data instead
             if(this.totalClicks === 3){
-                alert('25 clicks!');
                 // clear market survey
                 while(this.form.lastElementChild){
                     this.form.lastElementChild.remove();
                 }
-                console.log('total clicks', this.totalClicks);
 
-                // display user summary charts
-                let percentChart = new PercentChart({
+                var element = document.getElementById('guess-form');
+                element.innerHTML = '25 Clicks! View your results on the Results page.';
+                let productTable = new ProductTable({
                     products: this.products
                 });
-                let viewsChart = new ViewsChart({
-                    products: this.products
-                });
-                this.form.appendChild(percentChart.render());
-                this.form.appendChild(viewsChart.render());
+                console.log(productTable.render());
+                this.form.appendChild(productTable.render());
             }
+            console.log('total clicks', this.totalClicks);
         });
         return dom;
     }

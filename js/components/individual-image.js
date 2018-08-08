@@ -5,12 +5,10 @@ import html from '../html.js';
 let template = function(product) {
     let label = product.name;
     let filename = product.filename;
-    return html`<div>
-    <label> <input type='radio' name = 'image' value='${label}'> <img src = '${filename}' alt = '${label}' width = '200'> </label>  
-    </div>`;
+    return html`<div> <img src = '${filename}' alt = '${label}' width = '200'> </div>`;
 };
 
-export default class IndividualProduct {
+export default class IndividualImage {
     constructor(props) {
         this.product = props.product;
     }

@@ -1,10 +1,7 @@
 'use strict';
 
 import html from '../html.js';
-import ViewsChart from './views-chart.js';
-import PercentChart from './percent-chart.js';
-import ProductTable from './summary-table.js';
-
+import IndividualImage from './individual-image.js';
 // header of html file with main tag to add things to
 let template = function() {
     return html`
@@ -35,22 +32,14 @@ export default class App {
         if(json && json !== 'undefined') {
             data = JSON.parse(json);
         }
-        console.log(data.products);
+        let products = data.products;
 
-        let percentChart = new PercentChart({
-            products: data.products
-        });
-        let viewsChart = new ViewsChart({
-            products: data.products
-        });
-
-        let productTable = new ProductTable({
-            products: data.products
-        });
-
-        this.main.appendChild(productTable.render());
-        this.main.appendChild(percentChart.render());
-        this.main.appendChild(viewsChart.render());
+        for(let i = 0; i < products.length; i++) {
+            let individualImage = new IndividualImage({
+                product: products[i]
+            });
+            this.main.appendChild(individualImage.render());
+        }
 
         return dom;
     }

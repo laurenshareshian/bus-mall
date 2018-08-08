@@ -12,6 +12,7 @@ let template = function() {
     </header>   
     <section id='content-area'>
     <a href="../results.html"> Results </a>
+    <a href="../products.html"> Products </a>
     <main></main>
     </section>
     `;
