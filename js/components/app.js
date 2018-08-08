@@ -11,6 +11,7 @@ let template = function() {
         <h1> Market Research </h1>
     </header>   
     <section id='content-area'>
+    <a href="../results.html"> Results </a>
     <main></main>
     </section>
     `;

@@ -92,7 +92,7 @@ export default class ProductForm {
             this.totalClicks += 1;
 
             // if total clicks is over 25 display summary data instead
-            if(this.totalClicks === 25){
+            if(this.totalClicks === 3){
                 alert('25 clicks!');
                 // clear market survey
                 while(this.form.lastElementChild){

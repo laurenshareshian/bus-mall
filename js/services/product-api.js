@@ -1,10 +1,15 @@
 'use strict';
 
-let products = createProducts();
+import data from './data.js';
 
+let products = data.products;
+
+if(!products) {
+    data.products = createProducts();
+    products = data.products;
+}
 function createProducts() {
-    //initial product info
-    let products = [
+    return [
         { name: 'bag', filename: './img/bag.jpg', numViews: 0, numSelected: 0, lastViewed: false },
         { name: 'banana', filename: './img/banana.jpg', numViews: 0, numSelected: 0, lastViewed: false },
         { name: 'bathroom', filename: './img/bathroom.jpg', numViews: 0, numSelected: 0, lastViewed: false },
@@ -26,7 +31,6 @@ function createProducts() {
         { name: 'water-can', filename: './img/water-can.jpg', numViews: 0, numSelected: 0, lastViewed: false },
         { name: 'wine-glass', filename: './img/wine-glass.jpg', numViews: 0, numSelected: 0, lastViewed: false }
     ];
-    return products;
 
 }
 export default {
