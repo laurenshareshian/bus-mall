@@ -1,7 +1,8 @@
 'use strict';
 import html from '../html.js';
 import IndividualProduct from './individual-product.js';
-import ProductChart from './product-chart.js';
+import ViewsChart from './views-chart.js';
+import PercentChart from './percent-chart.js';
 
 // form structure
 let template = function() {
@@ -89,17 +90,25 @@ export default class ProductForm {
             }
             // keep track of click max
             this.totalClicks += 1;
-            if(this.totalClicks === 3){
+
+            // if total clicks is over 25 display summary data instead
+            if(this.totalClicks === 25){
                 alert('25 clicks!');
+                // clear market survey
                 while(this.form.lastElementChild){
                     this.form.lastElementChild.remove();
                 }
                 console.log('total clicks', this.totalClicks);
-                let productChart = new ProductChart({
+
+                // display user summary charts
+                let percentChart = new PercentChart({
                     products: this.products
                 });
-                console.log(productChart.render());
-                this.form.appendChild(productChart.render());
+                let viewsChart = new ViewsChart({
+                    products: this.products
+                });
+                this.form.appendChild(percentChart.render());
+                this.form.appendChild(viewsChart.render());
             }
         });
         return dom;
