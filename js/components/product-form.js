@@ -1,7 +1,6 @@
 'use strict';
 import html from '../html.js';
 import IndividualProduct from './individual-product.js';
-import updateD3 from './chart.js';
 
 // form structure
 let template = function() {
@@ -57,7 +56,7 @@ export default class ProductForm {
 
         this.flexBoxChoices = dom.querySelector('div.flex-box-choices');
         let subset = this.subset;
-        console.log('inside render in product-form', subset);
+
         for(let i = 0; i < subset.length; i++) {
             this.updateProduct(subset[i]);
         }
@@ -94,9 +93,6 @@ export default class ProductForm {
                 while(this.form.lastElementChild){
                     this.form.lastElementChild.remove();
                 }
-                var element = document.getElementById('chart');
-                element.innerHTML = '';
-                updateD3(this.products);
             }
             console.log('total clicks', this.totalClicks);
         });

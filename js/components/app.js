@@ -23,7 +23,7 @@ export default class App {
 
         // finds where to place info inside html
         this.main = dom.querySelector('main');
-        console.log('main on render', this.main);
+
         //load all products
         let products = productApi.load();
 

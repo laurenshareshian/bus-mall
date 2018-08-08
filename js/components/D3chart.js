@@ -83,8 +83,8 @@ export default function updateD3(products) {
         .attr('x', function(d) { return x(d.product); })
         .attr('width', x.rangeBand())
         .attr('y', function(d) { return y(d.percentage); })
-        .attr('height', function(d) { return height - y(d.percentage); })
-        // .on('mouseover', tip.show)
-        // .on('mouseout', tip.hide);
+        .attr('height', function(d) { return height - y(d.percentage); });
+    // .on('mouseover', tip.show)
+    // .on('mouseout', tip.hide);
 
 }
