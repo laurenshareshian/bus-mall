@@ -5,7 +5,7 @@
     // create all the rows in table
     let template = function(store) {
 
-    // create store label (column 0)
+        // create store label (column 0)
         let rowString = ' <tr> <td> <button>ⓧ</button>' + store.location + '</td>';
 
         // create column entries for store cookie hourly data

@@ -8,7 +8,7 @@ let template = function() {
     return html`<div class = 'flex-box-choices'></div>`;
 };
 
-    // takes in three products to display and renders them
+// takes in three products to display and renders them
 export default class ProductsChosenList {
     constructor(props) {
         this.products = props.products; // three chosen products
