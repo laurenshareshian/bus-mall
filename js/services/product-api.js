@@ -1,5 +1,3 @@
-'use strict';
-
 import data from './data.js';
 
 let products = data.products;

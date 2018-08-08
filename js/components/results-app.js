@@ -27,13 +27,14 @@ export default class App {
         //load all products
         // let products = data.products;
 
-        let products;
-        let json = window.localStorage.getItem('products');
+        let data;
+        let json = window.localStorage.getItem('data');
 
         if(json && json !== 'undefined') {
-            products = JSON.parse(json);
+            data = JSON.parse(json);
         }
-        console.log(json);
+        console.log(data.products);
+
         let percentChart = new PercentChart({
             products: data.products
         });
