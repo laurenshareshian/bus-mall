@@ -1,6 +1,7 @@
 'use strict';
 import html from '../html.js';
 import IndividualProduct from './individual-product.js';
+import ProductChart from './product-chart.js';
 
 // form structure
 let template = function() {
@@ -93,8 +94,13 @@ export default class ProductForm {
                 while(this.form.lastElementChild){
                     this.form.lastElementChild.remove();
                 }
+                console.log('total clicks', this.totalClicks);
+                let productChart = new ProductChart({
+                    products: this.products
+                });
+                console.log(productChart.render());
+                this.form.appendChild(productChart.render());
             }
-            console.log('total clicks', this.totalClicks);
         });
         return dom;
     }

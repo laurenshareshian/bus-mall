@@ -44,3 +44,7 @@ figcaption {
     display: flex;
     justify-content: center;
   }
+
+  .chart-container {
+    height: 350px;
+}
