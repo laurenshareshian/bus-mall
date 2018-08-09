@@ -60,7 +60,7 @@ export default class App {
             subset: subset,
 
             // if form is submitted
-            onSubmit: function(products) {
+            onClick: function(products) {
                 //randomly choose another three products and display them
                 [subset, products] = chooseThreeProducts(products);
 
