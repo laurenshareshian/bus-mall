@@ -6,7 +6,7 @@ let template = function(product) {
     let label = product.name;
     let filename = product.filename;
     return html`<div>
-    <label> <input type='radio' name = 'image' value='${label}'> <img src = '${filename}' alt = '${label}' width = '200'> </label>  
+    <label> <input type='radio' name = 'image' value='${label}'> <img src = '${filename}' alt = '${label}' width = '100'> </label>  
     </div>`;
 };
 

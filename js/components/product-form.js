@@ -6,12 +6,17 @@ import ProductTable from './summary-table.js';
 // form structure
 let template = function() {
     return html`
-    <form id='guess-form' >
-    <div class = 'flex-box-choices'></div>
-    <div class = 'button-container'>
-        <button id = 'submit' type='submit'> Vote </button>
-    </div>
-    </form>`;
+        <div class = 'survey'>
+            <form id='guess-form' >
+                <div class = 'flex-box-choices'></div>
+                <div class = 'button-container'>
+                    <button id = 'submit' type='submit'> Vote </button>
+                </div>
+            </form>
+        </div>
+        <div class = 'tablecontainer'></div>
+
+`;
 };
 
 export default class ProductForm {
@@ -62,6 +67,19 @@ export default class ProductForm {
             this.updateProduct(subset[i]);
         }
 
+        this.table = dom.querySelector('div.tablecontainer');
+        let productTable = new ProductTable({
+            products: this.products
+        });
+
+        console.log(productTable.render());
+        this.table.appendChild(productTable.render());
+
+        // this.main = dom.querySelector('main');
+        // this.main.appendChild(this.table);
+
+
+
         // listen for form submission
         this.form.addEventListener('submit', (event) => {
             // #1 Prevent default posting of the form
@@ -91,21 +109,24 @@ export default class ProductForm {
             this.totalClicks += 1;
 
             // if total clicks is over 25 display summary data instead
-            if(this.totalClicks === 3){
+            if(this.totalClicks === 1){
                 // clear market survey
-                while(this.form.lastElementChild){
-                    this.form.lastElementChild.remove();
-                }
+                // while(this.form.lastElementChild){
+                //     this.form.lastElementChild.remove();
+                // }
 
-                var element = document.getElementById('guess-form');
-                element.innerHTML = '25 Clicks! View your results on the Results page.';
-                let productTable = new ProductTable({
-                    products: this.products
-                });
-                console.log(productTable.render());
-                this.form.appendChild(productTable.render());
+                // var element = document.getElementById('guess-form');
+                // element.innerHTML = '25 Clicks! View your results on the Results page.';
+
+                // let productTable = new ProductTable({
+                //     products: this.products
+                // });
+                // console.log(productTable.render());
+                // this.form.appendChild(productTable.render());
             }
             console.log('total clicks', this.totalClicks);
+
+
         });
         return dom;
     }

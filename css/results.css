@@ -3,11 +3,12 @@
 * {
     -webkit-box-sizing: border-box;
             box-sizing: border-box; }
-
+  
 body {
     background: #F0F0F0;
+    margin: 0; 
     font-family: 'Yanone Kaffeesatz', sans-serif;}
-
+  
 header {
     color: grey;
     text-align: center;
@@ -19,6 +20,7 @@ footer {
     text-align: center;
     font-family: 'Yanone Kaffeesatz', sans-serif;
     font-size: 100%;}
+
 
 h2 {
     font-size: 1.4rem;
@@ -54,7 +56,7 @@ table td {
     margin: auto;
     }
 
-#table-container {
+.table-container {
     overflow-x:auto;
     display: flex;
     justify-content: center;
