@@ -34,7 +34,7 @@ h2 {
  .grid {
     display: grid;
     grid-template-columns: 30vw 70vw;
-    grid-template-rows: 20vh 8vh 90vh 5vh;
+    grid-template-rows: 20vh 20vh 90vh 5vh;
     grid-template-areas: "header header"
                          "nav nav"
                          "tablecontainer survey"
@@ -44,11 +44,9 @@ h2 {
 }
 .grid .header {
     grid-area: header;
-    background: skyblue;
 }
 .grid .nav {
     grid-area: nav;
-    background:yellow;
 }
 .grid .survey {
     grid-area: survey;
@@ -68,7 +66,6 @@ h2 {
 
 .grid .footer {
     grid-area: footer;
-    background: palegoldenrod;
 }
 
 .flex-box-choices {
@@ -90,3 +87,42 @@ table td {
     border:1px solid #000;
     margin: auto;
     }
+
+@supports ((display: -ms-grid) or (display: grid)) {
+    li {
+        width: auto;
+        margin: 0; }
+        
+    @media (min-width: 500px) {
+    }
+    @media (min-width: 980px) {
+    }
+}
+/***************************************************/
+.menu-toggle {
+    padding: 10px;
+    display: block;
+    text-align: center;
+    cursor: pointer;
+    background: grey;}
+
+.menu-content {
+    display: none;
+    /* display: flex; */
+    flex-direction: column;
+    align-items: center;}
+
+.men-content a {
+    padding: 5px 0;
+    background: blue;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    text-decoration: none;}
+
+nav:hover .menu-content {
+    display: flex;}
+
+nav:hover .menu-content a:hover {
+    background: teal;}
+  
