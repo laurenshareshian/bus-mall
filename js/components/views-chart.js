@@ -4,10 +4,12 @@ import html from '/js/html.js';
 
 let template = function() {
     return html`
-        <h2>Number of Views & Selections Chart</h2>
-        <div class="chart-container">
-            <canvas width="400"></canvas>
-        </div>
+        <li>
+            <h2>Number of Views & Selections Chart</h2>
+            <div class="chart-container">
+                <canvas width="200"></canvas>
+            </div>
+        </li>
     `;
 };
 

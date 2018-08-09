@@ -8,12 +8,19 @@
     background: #F0F0F0;
     margin: 0; 
     font-family: 'Yanone Kaffeesatz', sans-serif;}
-  header {
-      color: grey;
-      text-align: center;
-      font-family: 'Yanone Kaffeesatz', sans-serif;
-      font-size: 150%
-  }
+  
+header {
+    color: grey;
+    text-align: center;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-size: 150%;}
+
+  footer {
+    color: grey;
+    text-align: center;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-size: 100%;}
+
   main {
     /* autoprefixer: off */
     display: grid;

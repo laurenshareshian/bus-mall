@@ -4,18 +4,12 @@ import html from '../html.js';
 import ViewsChart from './views-chart.js';
 import PercentChart from './percent-chart.js';
 import ProductTable from './summary-table.js';
+import Methodology from './methodology.js';
 
-// header of html file with main tag to add things to
+// header of html file with ul tag to add things to
 let template = function() {
     return html`
-    <header>
-        <h1> Market Research </h1>
-    </header>   
-    <section id='content-area'>
-    <a href="../index.html"> Survey </a>
-    <a href="../products.html"> Products </a>
-    <main></main>
-    </section>
+    <ul></ul>
     `;
 };
 
@@ -25,7 +19,7 @@ export default class App {
         let dom = template();
 
         // finds where to place info inside html
-        this.main = dom.querySelector('main');
+        this.ul = dom.querySelector('ul');
         //load all products
         // let products = data.products;
 
@@ -47,11 +41,13 @@ export default class App {
         let productTable = new ProductTable({
             products: data.products
         });
+        let methodology = new Methodology({
+        });
 
-        this.main.appendChild(productTable.render());
-        this.main.appendChild(percentChart.render());
-        this.main.appendChild(viewsChart.render());
-
+        this.ul.appendChild(productTable.render());
+        this.ul.appendChild(percentChart.render());
+        this.ul.appendChild(viewsChart.render());
+        this.ul.appendChild(methodology.render());
         return dom;
     }
 }
