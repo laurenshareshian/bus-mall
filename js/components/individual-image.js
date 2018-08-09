@@ -5,7 +5,7 @@ import html from '../html.js';
 let template = function(product) {
     let label = product.name;
     let filename = product.filename;
-    return html`<div> <img src = '${filename}' alt = '${label}' width = '200'> </div>`;
+    return html`<figure> <img src = '${filename}' alt = '${label}' width = '200'> </figure>`;
 };
 
 export default class IndividualImage {

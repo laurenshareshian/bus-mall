@@ -5,14 +5,7 @@ import IndividualImage from './individual-image.js';
 // header of html file with main tag to add things to
 let template = function() {
     return html`
-    <header>
-        <h1> Market Research </h1>
-    </header>   
-    <section id='content-area'>
-    <a href="../index.html"> Survey </a>
-    <a href="../products.html"> Products </a>
     <main></main>
-    </section>
     `;
 };
 
