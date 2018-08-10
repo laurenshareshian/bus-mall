@@ -7,15 +7,16 @@ import ProductTable from './summary-table.js';
 let template = function() {
     return html`
         <div class = 'survey'>
-            <div class='surveyheader'><h2> Survey </h2> </div>
+            <div class='surveyheader' id='surveyheader'><h2> Survey </h2> </div>
             <div class='surveybody'>
-            <form id='guess-form' >
-                <div class = 'flex-box-choices'></div>
-                <div class = 'button-container'>
-                    <button id = 'submit' type='submit'> Vote </button>
-                </div>
-            </form>
+                <form id='guess-form' >
+                    <div class = 'flex-box-choices'></div>
+                    <div class = 'button-container'>
+                        <button id = 'submit' type='submit'> Vote </button>
+                    </div>
+                </form>
             </div>
+            <div class = 'message' id = 'message'></div>
         </div>
         <div class = 'tablecontainer'></div>
 
@@ -61,7 +62,7 @@ export default class ProductForm {
         let dom = template();
         this.form = dom.querySelector('form');
         let error = dom.querySelector('p.error');
-        // this.form.appendChild(this.productsChosenList.render());
+        this.table = dom.querySelector('div.tablecontainer');
 
         this.flexBoxChoices = dom.querySelector('div.flex-box-choices');
         let subset = this.subset;
@@ -69,17 +70,6 @@ export default class ProductForm {
         for(let i = 0; i < subset.length; i++) {
             this.updateProduct(subset[i]);
         }
-
-        this.table = dom.querySelector('div.tablecontainer');
-        let productTable = new ProductTable({
-            products: this.products
-        });
-
-        console.log(productTable.render());
-        this.table.appendChild(productTable.render());
-
-        // this.main = dom.querySelector('main');
-        // this.main.appendChild(this.table);
 
 
 
@@ -114,18 +104,18 @@ export default class ProductForm {
             // if total clicks is over 25 display summary data instead
             if(this.totalClicks === 1){
                 // clear market survey
-                // while(this.form.lastElementChild){
-                //     this.form.lastElementChild.remove();
-                // }
+                while(this.form.lastElementChild){
+                    this.form.lastElementChild.remove();
+                }
 
-                // var element = document.getElementById('guess-form');
-                // element.innerHTML = '25 Clicks! View your results on the Results page.';
+                var element = document.getElementById('message');
+                element.innerHTML = '25 Clicks! View your results on the results page.';
 
-                // let productTable = new ProductTable({
-                //     products: this.products
-                // });
-                // console.log(productTable.render());
-                // this.form.appendChild(productTable.render());
+                let productTable = new ProductTable({
+                    products: this.products
+                });
+
+                this.table.appendChild(productTable.render());
             }
             console.log('total clicks', this.totalClicks);
 

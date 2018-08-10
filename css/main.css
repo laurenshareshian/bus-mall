@@ -75,13 +75,13 @@ nav:hover .menu-conten a:hover {
 .grid {
     display: grid;
     grid-template-columns: 30vw 60vw;
-    grid-template-rows: 10em 5em 40em 5em;
+    grid-template-rows: 10em 5em 50em 5em;
     grid-template-areas: 'header header'
                         'nav nav'
                         'tablecontainer survey'
                         'footer footer';
     grid-column-gap: 1em;
-    grid-row-gap: 1em;
+    grid-row-gap: 2em;
 }
 
 .grid .header {
@@ -112,8 +112,10 @@ nav:hover .menu-conten a:hover {
 }
 
 
-.grid .footer {
+footer {
     grid-area: footer;
+    position: fixed;
+    bottom: 0px;
 }
 
 .survey {
@@ -121,7 +123,8 @@ nav:hover .menu-conten a:hover {
     grid-template-columns: 100%;
     grid-template-rows: 20% 50%;
     grid-template-areas: 'surveyheader'
-                         'surveybody';
+                         'surveybody'
+                          'message';
     grid-column-gap: 2vw;
 }
 
@@ -148,17 +151,21 @@ table td {
     margin: auto;
 }
 
-.surveyheader {
+.survey .surveyheader {
     align-self: flex-start;
     grid-area: surveyheader;
 
 }
 
-.surveybody {
+.survey .surveybody {
     align-self: flex-end;
     grid-area: surveybody;
 }
-
+.survey .message {
+    align-self: center;
+    justify-self: center;
+    color: red;
+}
 .flex-box-choices {
     align-self: center;
     display: flex;
@@ -267,7 +274,7 @@ button {
     background:white;
 }
 
-.grid3 .resultstable {
+.resultstable {
     grid-area: resultstable;
     background:white;
     overflow-x:auto;
@@ -290,7 +297,7 @@ button {
     grid-area: footer;    
 }
 .chart-container {
-    overflow-x:auto;
+    overflow-x:scroll !important;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -317,13 +324,13 @@ button {
         .grid {
             display: grid;
             grid-template-columns: 100vw;
-            grid-template-rows: 2vh 2vh 100vh 100vh 5vh;
+            grid-template-rows: 5em 15em 300em 200 em5em;
             grid-template-areas:    'header'
                                     'nav'
                                     'survey'
                                     'tablecontainer'
                                     'footer';
-            grid-row-gap: 2vh;
+            grid-row-gap: 2em;
         }
 
         .survey {
@@ -341,6 +348,7 @@ button {
         }
 
         .surveybody {
+            height: 50%;
             align-self: flex-end;
             grid-area: surveybody;
         }
@@ -385,9 +393,8 @@ button {
                                     'footer';
             grid-row-gap: 2em;
         }
-        .chart-container{
-            width: 90%;
-        }
+
+
     }
     @media (max-width: 980px) {
         /* survey page */
@@ -424,7 +431,7 @@ button {
         .grid3 {
             display: grid;
             grid-template-columns: 90vw;
-            grid-template-rows: 8em 5em 40em 40em 40em 30em 10em;
+            grid-template-rows: 8em 5em 40em 40em 40em 25em 5em;
             grid-template-areas:    'header'
                                     'nav'
                                     'percentchart'
