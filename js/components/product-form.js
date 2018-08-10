@@ -7,12 +7,15 @@ import ProductTable from './summary-table.js';
 let template = function() {
     return html`
         <div class = 'survey'>
+            <div class='surveyheader'><h2> Survey </h2> </div>
+            <div class='surveybody'>
             <form id='guess-form' >
                 <div class = 'flex-box-choices'></div>
                 <div class = 'button-container'>
                     <button id = 'submit' type='submit'> Vote </button>
                 </div>
             </form>
+            </div>
         </div>
         <div class = 'tablecontainer'></div>
 

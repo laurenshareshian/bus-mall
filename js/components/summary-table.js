@@ -6,7 +6,7 @@ import ProductRow from './summary-row.js';
 // table template
 let template = function() {
     return html`
-        <h2> Summary Table </h2>
+        <div class='tableheader'> <h2> Summary Table </h2></div>
         <table id="table">
             <thead>
                 <tr>
