@@ -5,7 +5,33 @@ import IndividualImage from './individual-image.js';
 // header of html file with main tag to add things to
 let template = function() {
     return html`
-    <main></main>
+    <main>
+        <div class='productgrid'>
+            <div class = 'header'>
+                <header>
+                        <h1> Market Research </h1>
+                </header>
+            </div>
+            <div class = 'nav'> 
+                <nav>  
+                    <span class="menu-toggle">Menu</span>
+                    <div class="menu-content">
+                        <a href="../index.html"> Survey </a>
+                        <a href="../results.html"> Results </a>
+                        <a href="../products.html"> Products </a>
+                    </div>
+                </nav>
+            </div>
+            <div class = 'products'>
+            </div>
+            <div class = 'footer'>
+                <footer>
+                    &copy; Lauren Shareshian
+                </footer>
+            </div>
+        </div>
+
+    </main>
     `;
 };
 
@@ -15,7 +41,7 @@ export default class App {
         let dom = template();
 
         // finds where to place info inside html
-        this.main = dom.querySelector('main');
+        this.main = dom.querySelector('div.products');
         //load all products
         // let products = data.products;
 
