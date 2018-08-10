@@ -204,8 +204,18 @@ button {
 }
  
 .radio-label {
-    float: center
+    align-self: center;
+    display: block;
 }
+
+input[type=radio]{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5vh;
+}
+
+
   /***************************************************/
   /* Products Page */
 
@@ -336,7 +346,7 @@ button {
         .survey {
             display: grid;
             grid-template-columns: 100%;
-            grid-template-rows: 1vh 45vh;
+            grid-template-rows: 1vh 20vh;
             grid-template-areas:    'surveyheader'
                                     'surveybody';
             grid-column-gap: 1vw;
@@ -362,6 +372,10 @@ button {
             flex-direction: column;
         }
 
+        input[type=radio]{
+            margin-bottom: 1vh;
+        }
+        
         /* product page */
         .grid2 {
             display: grid;

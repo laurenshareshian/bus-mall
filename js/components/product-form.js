@@ -9,19 +9,19 @@ import ProductTable from './summary-table.js';
 // form structure
 let template = function() {
     return html`
-        <div class = 'survey'>
-            <div class='surveyheader' id='surveyheader'><h2> Survey </h2> </div>
-            <div class='surveybody'>
-                <form id='guess-form' >
-                    <div class = 'flex-box-choices'></div>
-                    <div class = 'button-container'>
-                        <button id = 'submit' type='submit'> Vote </button>
+        <div class="survey">
+            <div class="surveyheader" id="surveyheader"><h2> Survey </h2> </div>
+            <div class="surveybody">
+                <form id="guess-form" >
+                    <div class="flex-box-choices"></div>
+                    <div class="button-container">
+                        <button id="submit" type="submit"> Vote </button>
                     </div>
                 </form>
             </div>
-            <div class = 'message' id = 'message'></div>
+            <div class="message" id="message"></div>
         </div>
-        <div class = 'tablecontainer'></div>
+        <div class="tablecontainer" id="tablecontainer"> <h2> Results </h2> </div>
 
 `;
 };
@@ -106,7 +106,7 @@ export default class ProductForm {
             this.totalClicks += 1;
 
             // #6 if total clicks is over 25 display summary data instead
-            if(this.totalClicks === 10){
+            if(this.totalClicks === 25){
 
                 // clear survey
                 while(this.form.lastElementChild){
@@ -115,6 +115,8 @@ export default class ProductForm {
 
                 var element = document.getElementById('message');
                 element.innerHTML = '25 Clicks! View your results on the results page.';
+                element = document.getElementById('tablecontainer');
+                element.innerHTML = '';
 
                 // display results table instead
                 let productTable = new ProductTable({

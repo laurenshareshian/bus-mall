@@ -7,8 +7,8 @@ let template = function(product) {
     let label = product.name;
     let filename = product.filename;
     return html`<div class="image">
-    <input type="radio" name="image" value="${label}" /> 
     <label class="radio-label"> <img src="${filename}" alt="${label}"> </label> 
+    <input type="radio" name="image" value="${label}" /> 
     </div>`;
 };
 
