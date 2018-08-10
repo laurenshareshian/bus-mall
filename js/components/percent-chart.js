@@ -1,5 +1,7 @@
 /* global Chart */
 
+// create chart displaying percentages for use on results page
+
 import html from '/js/html.js';
 
 let template = function() {
@@ -37,6 +39,7 @@ export default class PercentChart {
             }
         }
 
+        // create chart using chart.js
         this.chart = new Chart(ctx, {
             type: 'bar',
             data: {

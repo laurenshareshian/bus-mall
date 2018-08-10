@@ -3,34 +3,14 @@
 import html from '../html.js';
 import ProductForm from './product-form.js';
 import productApi from '../services/product-api.js';
+import Header from './header.js';
+import Footer from './footer.js';
 
-// header of html file with main tag to add things to
+// grid class will be used for a flex grid
 let template = function() {
     return html`
     <main>
-        <div class='grid'>
-            <div class = 'header'>
-                <header>
-                        <h1> Market Research </h1>
-                </header>
-            </div>
-            <div class = 'nav'> 
-                <nav>  
-                    <span class="menu-toggle">Menu</span>
-                    <div class="menu-content">
-                        <a href="../index.html"> Survey </a>
-                        <a href="../results.html"> Results </a>
-                        <a href="../products.html"> Products </a>
-                    </div>
-                </nav>
-            </div>
-            <div class = 'footer'>
-                <footer>
-                    &copy; Lauren Shareshian
-                </footer>
-            </div>
-        </div>
-
+        <div class="grid"></div>
     </main>
     `;
 };
@@ -40,28 +20,30 @@ export default class App {
     render() {
         let dom = template();
 
-        // finds where to place info inside html
+        // appends header
         this.main = dom.querySelector('div.grid');
+        let header = new Header({});
+        this.main.appendChild(header.render());
 
         //load all products
-        let products = productApi.load();
+        this.products = productApi.load();
 
         // keep track of votes submitted
         let totalClicks = 0;
 
-        // randomly choose three products not just shown
+        // randomly choose three products not immediately previously shown
         let subset = [];
-        [subset, products] = chooseThreeProducts(products);
+        [subset, this.products] = chooseThreeProducts(this.products);
 
         // create submission form
         let productForm = new ProductForm({
-            products: products,
+            products: this.products,
             totalClicks: totalClicks,
             subset: subset,
 
             // if form is submitted
             onSubmit: function(products) {
-                //randomly choose another three products and display them
+                //randomly choose another three products
                 [subset, products] = chooseThreeProducts(products);
 
                 // display the new products on the page
@@ -72,8 +54,12 @@ export default class App {
 
             }
         });
-        // adds products to screen upon page load
+        // add products to screen upon page load
         this.main.appendChild(productForm.render());
+
+        // append footer
+        let footer = new Footer({});
+        this.main.appendChild(footer.render());
         return dom;
     }
 }
@@ -111,7 +97,7 @@ function chooseThreeProducts(products) {
         products[i].lastViewed = false;
     }
 
-    //update lastViewed key to store most recent ones
+    // update lastViewed key to store most recently viewed products
     for(let i = 0; i < indices.length; i++){
         products[indices[i]].numViews += 1;
         products[indices[i]].lastViewed = true;

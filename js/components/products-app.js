@@ -1,50 +1,42 @@
 'use strict';
 
+// creates page that displays products
+
 import html from '../html.js';
 import IndividualImage from './individual-image.js';
-// header of html file with main tag to add things to
+import Header from './header.js';
+import Footer from './footer.js';
+
+// header of html file with grid2 to create a flex grid
 let template = function() {
     return html`
     <main>
-        <div class='grid2'>
-            <div class = 'header'>
-                <header>
-                        <h1> Market Research </h1>
-                </header>
-            </div>
-            <div class = 'nav'> 
-                <nav>  
-                    <span class="menu-toggle">Menu</span>
-                    <div class="menu-content">
-                        <a href="../index.html"> Survey </a>
-                        <a href="../results.html"> Results </a>
-                        <a href="../products.html"> Products </a>
-                    </div>
-                </nav>
-            </div>
-            <div class = 'products'>
-            </div>
-            <div class = 'footer'>
-                <footer>
-                    &copy; Lauren Shareshian
-                </footer>
-            </div>
+        <div class="grid2">
+            <div class="products"></div>
         </div>
-
     </main>
     `;
 };
 
-// prints product data to screen upon page load and form submission
+// prints product data to screen upon page load
 export default class App {
     render() {
         let dom = template();
 
-        // finds where to place info inside html
-        this.main = dom.querySelector('div.products');
-        //load all products
-        // let products = data.products;
+        // append header
+        this.main = dom.querySelector('div.grid2');
+        let header = new Header({});
+        this.main.appendChild(header.render());
 
+        // append footer
+        this.main = dom.querySelector('div.grid2');
+        let footer = new Footer({});
+        this.main.appendChild(footer.render());
+
+        // finds where to place product images inside html
+        this.main = dom.querySelector('div.products');
+
+        // take in product data stored in local storage
         let data;
         let json = window.localStorage.getItem('data');
 
@@ -53,6 +45,7 @@ export default class App {
         }
         let products = data.products;
 
+        // display images on screen
         for(let i = 0; i < products.length; i++) {
             let individualImage = new IndividualImage({
                 product: products[i]

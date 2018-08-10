@@ -1,7 +1,8 @@
 'use strict';
+
+// creates each row in the results table
 import html from '../html.js';
 
-// create all the rows in table
 let template = function(product) {
     let percent = product.numSelected / product.numViews;
     return html`

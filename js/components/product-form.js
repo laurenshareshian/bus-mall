@@ -1,4 +1,7 @@
 'use strict';
+
+//create form to use for survey
+
 import html from '../html.js';
 import IndividualProduct from './individual-product.js';
 import ProductTable from './summary-table.js';
@@ -32,11 +35,13 @@ export default class ProductForm {
         this.subset = props.subset;
     }
 
+    // create updated product display
     update(props) {
-        // create new product display
+
         this.products = props.products;
         this.subset = props.subset;
 
+        // clear out previous images
         try {
             while(this.flexBoxChoices.lastElementChild){
                 this.flexBoxChoices.lastElementChild.remove();
@@ -58,20 +63,19 @@ export default class ProductForm {
         });
         this.flexBoxChoices.appendChild(individualProduct.render());
     }
+
+    // upon page load display the following
     render() {
         let dom = template();
         this.form = dom.querySelector('form');
         let error = dom.querySelector('p.error');
         this.table = dom.querySelector('div.tablecontainer');
-
         this.flexBoxChoices = dom.querySelector('div.flex-box-choices');
         let subset = this.subset;
 
         for(let i = 0; i < subset.length; i++) {
             this.updateProduct(subset[i]);
         }
-
-
 
         // listen for form submission
         this.form.addEventListener('submit', (event) => {
@@ -98,12 +102,13 @@ export default class ProductForm {
                 console.log(err);
                 error.textContent = err.message;
             }
-            // keep track of click max
+            // #5 keep track of click max
             this.totalClicks += 1;
 
-            // if total clicks is over 25 display summary data instead
-            if(this.totalClicks === 1){
-                // clear market survey
+            // #6 if total clicks is over 25 display summary data instead
+            if(this.totalClicks === 10){
+
+                // clear survey
                 while(this.form.lastElementChild){
                     this.form.lastElementChild.remove();
                 }
@@ -111,6 +116,7 @@ export default class ProductForm {
                 var element = document.getElementById('message');
                 element.innerHTML = '25 Clicks! View your results on the results page.';
 
+                // display results table instead
                 let productTable = new ProductTable({
                     products: this.products
                 });

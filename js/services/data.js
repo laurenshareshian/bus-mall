@@ -1,5 +1,6 @@
+
 // load data "at the start"
-let stored = window.localStorage.getItem('products');
+let stored = window.localStorage.getItem('data');
 let data;
 // did we find something?
 if(stored && stored !== 'undefined') {

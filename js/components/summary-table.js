@@ -1,13 +1,14 @@
 'use strict';
 
+// creates the results table
+
 import html from '../html.js';
 import ProductRow from './summary-row.js';
 
-// table template
 let template = function() {
     return html`
-        <div class='tableheader'> <h2> Summary Table </h2></div>
-        <div class = 'tablebody'>
+        <div class="tableheader"> <h2> Summary Table </h2></div>
+        <div class="tablebody">
             <table id="table">
                 <thead>
                     <tr>

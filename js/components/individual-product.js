@@ -1,13 +1,14 @@
 'use strict';
 import html from '../html.js';
 
-// create the html to display one product image
+// create the html to display one product image along with radio button for survey page
+
 let template = function(product) {
     let label = product.name;
     let filename = product.filename;
-    return html`<div class = 'image'>
-    <input type='radio' name = 'image' value='${label}' /> 
-    <label class='radio-label'> <img src = '${filename}' alt = '${label}'> </label> 
+    return html`<div class="image">
+    <input type="radio" name="image" value="${label}" /> 
+    <label class="radio-label"> <img src="${filename}" alt="${label}"> </label> 
     </div>`;
 };
 

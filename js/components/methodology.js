@@ -1,5 +1,7 @@
 import html from '/js/html.js';
 
+// display methodology on results page (just random text)
+
 let template = function() {
     return html`
         <h2>Methodology</h2>
