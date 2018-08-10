@@ -6,10 +6,38 @@ import PercentChart from './percent-chart.js';
 import ProductTable from './summary-table.js';
 import Methodology from './methodology.js';
 
-// header of html file with ul tag to add things to
+// header of html file with main tag to add things to
 let template = function() {
     return html`
-    <ul></ul>
+    <main>
+        <div class='grid3'>
+            <div class = 'header'>
+                <header>
+                        <h1> Market Research </h1>
+                </header>
+            </div>
+            <div class = 'nav'> 
+                <nav>  
+                    <span class="menu-toggle">Menu</span>
+                    <div class="menu-content">
+                        <a href="../index.html"> Survey </a>
+                        <a href="../results.html"> Results </a>
+                        <a href="../products.html"> Products </a>
+                    </div>
+                </nav>
+            </div>
+            <div class = 'percentchart'>  </div>
+            <div class = 'numviewschart'> </div>
+            <div class = 'resultstable'> </div>
+            <div class = 'methodology'> </div>
+            <div class = 'footer'>
+                <footer>
+                    &copy; Lauren Shareshian
+                </footer>
+            </div>
+        </div>
+
+    </main>
     `;
 };
 
@@ -17,11 +45,6 @@ let template = function() {
 export default class App {
     render() {
         let dom = template();
-
-        // finds where to place info inside html
-        this.ul = dom.querySelector('ul');
-        //load all products
-        // let products = data.products;
 
         let data;
         let json = window.localStorage.getItem('data');
@@ -43,11 +66,14 @@ export default class App {
         });
         let methodology = new Methodology({
         });
-
-        this.ul.appendChild(productTable.render());
-        this.ul.appendChild(percentChart.render());
-        this.ul.appendChild(viewsChart.render());
-        this.ul.appendChild(methodology.render());
+        let percent = dom.querySelector('div.percentchart');
+        percent.appendChild(percentChart.render());
+        let numViews = dom.querySelector('div.numviewschart');
+        numViews.appendChild(viewsChart.render());
+        let results = dom.querySelector('div.resultstable');
+        results.appendChild(productTable.render());
+        let meth = dom.querySelector('div.methodology');
+        meth.appendChild(methodology.render());
         return dom;
     }
 }

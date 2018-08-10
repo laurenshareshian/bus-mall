@@ -6,7 +6,7 @@ import IndividualImage from './individual-image.js';
 let template = function() {
     return html`
     <main>
-        <div class='productgrid'>
+        <div class='grid2'>
             <div class = 'header'>
                 <header>
                         <h1> Market Research </h1>

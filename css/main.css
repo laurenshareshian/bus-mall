@@ -1,7 +1,5 @@
  @import url('https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz');
 
- /* header, section, footer, aside, nav, article, figure, figcaption {
-    display: block;} */
 * {
     -webkit-box-sizing: border-box;
             box-sizing: border-box; }
@@ -10,20 +8,23 @@ body {
     background: #F0F0F0;
     margin: 0; 
     font-family: 'Yanone Kaffeesatz', sans-serif;
-    margin-left: 20px;
-    margin-right: 20px;}
-  
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
 header {
     color: grey;
     text-align: center;
     font-family: 'Yanone Kaffeesatz', sans-serif;
-    font-size: 150%;}
+    font-size: 150%;
+}
 
 footer {
     color: grey;
     text-align: center;
     font-family: 'Yanone Kaffeesatz', sans-serif;
-    font-size: 100%;}
+    font-size: 100%;
+}
 
 h2 {
     font-size: 2.0rem;
@@ -31,124 +32,14 @@ h2 {
     text-transform: uppercase;
     line-height: 1.1em;
     text-align: center;
-    vertical-align: top;}
+    vertical-align: top;
+}
 
 img {
     width: 20vw;
 }
-.grid {
-display: grid;
-grid-template-columns: 30vw 60vw;
-grid-template-rows: 20vh 20vh 90vh 5vh;
-grid-template-areas: "header header"
-                        "nav nav"
-                        "tablecontainer survey"
-                        "footer footer";
-grid-column-gap: 2vw;}
-
-.grid .header {
-    grid-area: header;
-    text-align: center;
-    vertical-align: top;
-}
-.grid .nav {
-    grid-area: nav;
-}
-.grid .survey {
-    grid-area: survey;
-    background:white;
-}
-.grid .tablecontainer {
-    grid-area: tablecontainer;
-    background:white;
-    overflow-x:auto;
-    display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: 20% 50%;
-    grid-template-areas: "tableheader"
-                            "table";
-    grid-column-gap: 2vw;
-}
-
-.grid .footer {
-    grid-area: footer;
-}
-
-.survey {
-    display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: 20% 50%;
-    grid-template-areas: "surveyheader"
-                            "surveybody";
-    grid-column-gap: 2vw;
-}
-
-.tablecontainer {
-    justify-content: center;
-}
-.tableheader {
-    grid-area: tableheader;} 
-
-.tablebody {
-    justify-self: center;
-}
-table {
-    grid-area: table;
-    border-collapse:collapse;
-    table-layout: auto;} 
-
-table td {
-    border:1px solid #000;
-    margin: auto;
-    }
-
-.surveyheader {
-    align-self: flex-start;
-    grid-area: surveyheader;
-
-}
-.surveybody {
-    align-self: flex-end;
-    grid-area: surveybody;
-}
-
-.flex-box-choices {
-    align-self: center;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: flex-end;
-}
-
-.button-container {
-    display: flex;
-    justify-content: center;
-  }  
-  button {
-    border: 3px solid #96d1f8;
-    background: grey;
-    padding: 14.5px 29px;
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
-    border-radius: 8px;
-    color: white;
-    font-size: 16px;
-    font-family: Helvetica, Arial, Sans-Serif;
-    text-decoration: none;
-    vertical-align: middle;
-    }
- .button:hover {
-    border-top-color: #28597a;
-    background: #28597a;
-    color: #ccc;
-    }
- .button:active {
-    border-top-color: #1b435e;
-    background: #1b435e;
-    }
- 
-.radio-label {
-    float: center
-}
+/**************************/
+/* Nav bar ***************/
 .menu-toggle {
     padding: 10px;
     display: block;
@@ -179,37 +70,236 @@ nav:hover .menu-content {
 nav:hover .menu-conten a:hover {
     background: teal;
 }
-  /***************************************************/
-  .grid2 {
+/*******************************************/
+/* Survey page */
+.grid {
     display: grid;
     grid-template-columns: 30vw 60vw;
-    grid-template-rows: 20vh 20vh 90vh 5vh;
-    grid-template-areas: "header"
-                            "nav"
-                            "products"
-                            "footer";
-    grid-column-gap: 2vw;}
-    
-    .grid2 .header {
-        grid-area: header;
-        text-align: center;
-        vertical-align: top;
-    }
-    .grid2 .nav {
-        grid-area: nav;
-    }
-    .grid2 .products {
-        grid-area: survey;
-    }
-    
-    .grid2 .footer {
-        grid-area: footer;
-    }
+    grid-template-rows: 10em 5em 40em 5em;
+    grid-template-areas: 'header header'
+                        'nav nav'
+                        'tablecontainer survey'
+                        'footer footer';
+    grid-column-gap: 1em;
+    grid-row-gap: 1em;
+}
 
+.grid .header {
+    grid-area: header;
+    text-align: center;
+    vertical-align: top;
+}
+
+.grid .nav {
+    grid-area: nav;
+}
+
+.grid .survey {
+    grid-area: survey;
+    background:white;
+}
+
+.grid .tablecontainer {
+    grid-area: tablecontainer;
+    background:white;
+    overflow-x:auto;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 20% 50%;
+    grid-template-areas: 'tableheader'
+                            'table';
+    grid-column-gap: 2vw;
+}
+
+
+.grid .footer {
+    grid-area: footer;
+}
+
+.survey {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 20% 50%;
+    grid-template-areas: 'surveyheader'
+                         'surveybody';
+    grid-column-gap: 2vw;
+}
+
+.tablecontainer {
+    justify-content: center;
+}
+
+.tableheader {
+    grid-area: tableheader;
+} 
+
+.tablebody {
+    justify-self: center;
+}
+
+table {
+    grid-area: table;
+    border-collapse:collapse;
+    table-layout: auto;
+} 
+
+table td {
+    border:1px solid #000;
+    margin: auto;
+}
+
+.surveyheader {
+    align-self: flex-start;
+    grid-area: surveyheader;
+
+}
+
+.surveybody {
+    align-self: flex-end;
+    grid-area: surveybody;
+}
+
+.flex-box-choices {
+    align-self: center;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-end;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+  }  
+
+button {
+    border: 3px solid #96d1f8;
+    background: grey;
+    padding: 14.5px 29px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    font-family: Helvetica, Arial, Sans-Serif;
+    text-decoration: none;
+    vertical-align: middle;
+}
+
+ .button:hover {
+    border-top-color: #28597a;
+    background: #28597a;
+    color: #ccc;
+}
+
+.button:active {
+    border-top-color: #1b435e;
+    background: #1b435e;
+}
+ 
+.radio-label {
+    float: center
+}
   /***************************************************/
-@supports ((display: -ms-grid) or (display: grid)) {
-    @media (max-width: 500px) {
+  /* Products Page */
 
+.grid2 {
+    display: grid;
+    grid-template-columns: 100vw;
+    grid-template-rows: 10em 5em 40em 5em;
+    grid-template-areas: 'header'
+                         'nav'
+                         'products'
+                         'footer';
+    grid-row-gap: 1em;
+}
+
+.grid2 .header {
+    grid-area: header;
+    text-align: center;
+    vertical-align: top;
+}
+
+.grid2 .nav {
+    grid-area: nav;
+}
+
+.grid2 .products {
+    grid-area: products;
+}
+
+.grid2 .footer {
+    grid-area: footer;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+
+
+/**********************************************/
+/* Results page */
+.grid3 {
+    display: grid;
+    grid-template-columns: 70vw 20vw;
+    grid-template-rows: 10em 5em 40em 40em 40em 5em;
+    grid-template-areas:    'header header'
+                            'nav nav'
+                            'percentchart meth'
+                            'numviewschart meth'
+                            'resultstable meth'
+                            'footer footer';
+    grid-row-gap: 2vh;}
+    
+.grid3 .header {
+    grid-area: header;
+    text-align: center;
+    vertical-align: top;
+}
+.grid3 .nav {
+    grid-area: nav;
+}
+.grid3 .percentchart {
+    grid-area: percentchart;
+    background:white;
+}
+.grid3 .numviewschart {
+    grid-area: numviewschart;
+    background:white;
+}
+
+.grid3 .resultstable {
+    grid-area: resultstable;
+    background:white;
+    overflow-x:auto;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 20% 50%;
+    grid-template-areas: 'tableheader'
+                            'table';
+    grid-column-gap: 2vw;
+}
+
+.resultstable {
+    justify-content: center;
+}
+.grid3 .methodology {
+    grid-area: meth;
+    padding: 2vw;
+}
+.grid3 .footer {
+    grid-area: footer;    
+}
+.chart-container {
+    overflow-x:auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80% !important;
+}
+  /***************************************************/
+  @supports ((display: -ms-grid) or (display: grid)) {
+    @media (max-width: 500px) {
+        /* nav bar */
         .menu-toggle {
             display: flex;
             justify-content: center;
@@ -217,40 +307,44 @@ nav:hover .menu-conten a:hover {
         .menu-content {
             display: none;
             flex-direction: column;
-            align-items: center;}
+            align-items: center;
+        }
     
         .menu-content a {
-            padding: 5px 0;
-            
+            padding-top: 5px 0;
         }
+        /* survey page */
         .grid {
             display: grid;
             grid-template-columns: 100vw;
             grid-template-rows: 2vh 2vh 100vh 100vh 5vh;
-            grid-template-areas: "header"
-                                    "nav"
-                                    "survey"
-                                    "tablecontainer"
-                                    "footer";
-            grid-row-gap: 2vh;}
+            grid-template-areas:    'header'
+                                    'nav'
+                                    'survey'
+                                    'tablecontainer'
+                                    'footer';
+            grid-row-gap: 2vh;
+        }
 
         .survey {
             display: grid;
             grid-template-columns: 100%;
             grid-template-rows: 1vh 45vh;
-            grid-template-areas: "surveyheader"
-                                    "surveybody";
+            grid-template-areas:    'surveyheader'
+                                    'surveybody';
             grid-column-gap: 1vw;
         }
+
         .surveyheader {
             align-self: flex-start;
             grid-area: surveyheader;
-        
         }
+
         .surveybody {
             align-self: flex-end;
             grid-area: surveybody;
         }
+
         .flex-box-choices {
             height: 20%;
             align-self: flex-end;
@@ -259,18 +353,87 @@ nav:hover .menu-conten a:hover {
             align-items: center;
             flex-direction: column;
         }
+
+        /* product page */
+        .grid2 {
+            display: grid;
+            grid-template-columns: 100vw;
+            grid-template-rows: 5em 9em 200em 5em;
+            grid-template-areas: 'header'
+                                 'nav'
+                                 'products'
+                                 'footer';
+            grid-row-gap: 1em;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); 
+        
+        }
+        /* results page */
+        .grid3 {
+            display: grid;
+            grid-template-columns: 90vw;
+            grid-template-rows: 6em 8em 30em 40em 40em 30em 10em;
+            grid-template-areas:    'header'
+                                    'nav'
+                                    'percentchart'
+                                    'numviewschart'
+                                    'resultstable'
+                                    'meth'
+                                    'footer';
+            grid-row-gap: 2em;
+        }
+        .chart-container{
+            width: 90%;
+        }
     }
     @media (max-width: 980px) {
+        /* survey page */
         .grid {
             display: grid;
             grid-template-columns: 100vw;
-            grid-template-rows: 20vh 20vh 70vh 100vh 5vh;
-            grid-template-areas: "header"
-                                    "nav"
-                                    "survey"
-                                    "tablecontainer"
-                                    "footer";
-            grid-row-gap: 20vh;}
-            
+            grid-template-rows: 8em 5em 30em 40em 10em;
+            grid-template-areas:    'header'
+                                    'nav'
+                                    'survey'
+                                    'tablecontainer'
+                                    'footer';
+            grid-row-gap: 1em;
+        }
+    
+        /* product page */
+        .grid2 {
+            display: grid;
+            grid-template-columns: 100vw;
+            grid-template-rows: 8em 5em 80em 10em;
+            grid-template-areas:    'header'
+                                    'nav'
+                                    'products'
+                                    'footer';
+            grid-row-gap: 1em;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+        }
+
+        /* results page */
+        .grid3 {
+            display: grid;
+            grid-template-columns: 90vw;
+            grid-template-rows: 8em 5em 40em 40em 40em 30em 10em;
+            grid-template-areas:    'header'
+                                    'nav'
+                                    'percentchart'
+                                    'numviewschart'
+                                    'resultstable'
+                                    'meth'
+                                    'footer';
+            grid-row-gap: 1em;
+        }
+
     }
 }
