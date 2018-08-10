@@ -7,18 +7,20 @@ import ProductRow from './summary-row.js';
 let template = function() {
     return html`
         <div class='tableheader'> <h2> Summary Table </h2></div>
-        <table id="table">
-            <thead>
-                <tr>
-                    <th>Product Name</th>
-                    <th>Selections</th> 
-                    <th>Views</th> 
-                    <th>Percentage Chosen</th> 
-                </tr>
-            </thead>
-            <tbody id="tbody">
-            </tbody>
-        </table>
+        <div class = 'tablebody'>
+            <table id="table">
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Selections</th> 
+                        <th>Views</th> 
+                        <th>Percentage Chosen</th> 
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+                </tbody>
+            </table>
+        </div>
     `;
 };
 
