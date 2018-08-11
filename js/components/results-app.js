@@ -45,7 +45,6 @@ export default class App {
         if(json && json !== 'undefined') {
             data = JSON.parse(json);
         }
-        console.log(data.products);
 
         // create a percent chart of views
         let percentChart = new PercentChart({

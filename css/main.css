@@ -36,7 +36,7 @@ h2 {
 }
 
 img {
-    width: 20vw;
+    width: 18vw;
 }
 /**************************/
 /* Nav bar ***************/
@@ -74,8 +74,8 @@ nav:hover .menu-conten a:hover {
 /* Survey page */
 .grid {
     display: grid;
-    grid-template-columns: 30vw 60vw;
-    grid-template-rows: 10em 5em 50em 5em;
+    grid-template-columns: 20vw 70vw;
+    grid-template-rows: 10em 5em 40em 5em;
     grid-template-areas: 'header header'
                         'nav nav'
                         'tablecontainer survey'
@@ -171,49 +171,9 @@ table td {
     display: flex;
     justify-content: space-evenly;
     align-items: flex-end;
+    flex-basis: shrink;
 }
 
-.button-container {
-    display: flex;
-    justify-content: center;
-  }  
-
-button {
-    border: 3px solid #96d1f8;
-    background: grey;
-    padding: 14.5px 29px;
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
-    border-radius: 8px;
-    color: white;
-    font-size: 16px;
-    font-family: Helvetica, Arial, Sans-Serif;
-    text-decoration: none;
-    vertical-align: middle;
-}
-
- .button:hover {
-    border-top-color: #28597a;
-    background: #28597a;
-    color: #ccc;
-}
-
-.button:active {
-    border-top-color: #1b435e;
-    background: #1b435e;
-}
- 
-.radio-label {
-    align-self: center;
-    display: block;
-}
-
-input[type=radio]{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 5vh;
-}
 
 
   /***************************************************/
@@ -316,6 +276,10 @@ input[type=radio]{
   /***************************************************/
   @supports ((display: -ms-grid) or (display: grid)) {
     @media (max-width: 500px) {
+
+        img {
+            width: 30vw;
+        }
         /* nav bar */
         .menu-toggle {
             display: flex;
@@ -346,7 +310,7 @@ input[type=radio]{
         .survey {
             display: grid;
             grid-template-columns: 100%;
-            grid-template-rows: 1vh 20vh;
+            grid-template-rows: 1vh 60vh;
             grid-template-areas:    'surveyheader'
                                     'surveybody';
             grid-column-gap: 1vw;

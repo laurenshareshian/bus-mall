@@ -3,7 +3,7 @@
 // creates page that displays products
 
 import html from '../html.js';
-import IndividualImage from './individual-image.js';
+import Product from './product.js';
 import Header from './header.js';
 import Footer from './footer.js';
 
@@ -47,10 +47,10 @@ export default class App {
 
         // display images on screen
         for(let i = 0; i < products.length; i++) {
-            let individualImage = new IndividualImage({
+            let product = new Product({
                 product: products[i]
             });
-            this.main.appendChild(individualImage.render());
+            this.main.appendChild(product.render());
         }
 
         return dom;
