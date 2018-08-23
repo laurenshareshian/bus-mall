@@ -15,9 +15,9 @@ let template = function() {
             <nav>  
                 <span class="menu-toggle">Menu</span>
                 <div class="menu-content">
-                    <a href="../../index.html"> Survey </a>
-                    <a href="../../results.html"> Results </a>
-                    <a href="../../products.html"> Products </a>
+                    <a href="index.html"> Survey </a>
+                    <a href="results.html"> Results </a>
+                    <a href="products.html"> Products </a>
                 </div>
             </nav>
         </div>
