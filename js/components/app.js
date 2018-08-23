@@ -1,6 +1,6 @@
 'use strict';
 
-import html from '/js/html.js';
+import html from '../html.js';
 import productsApi from '../services/product-api.js';
 import ProductSelector from './product-selector.js';
 import Header from './header.js';
