@@ -1,4 +1,4 @@
-import html from '/js/html.js';
+import html from '../html.js';
 
 // display methodology on results page (just random text)
 

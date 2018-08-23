@@ -1,4 +1,4 @@
-import html from '/js/html.js';
+import html from '../html.js';
 import Product from './product.js';
 import ProductTable from './summary-table.js';
 
