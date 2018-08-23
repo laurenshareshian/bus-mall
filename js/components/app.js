@@ -43,7 +43,7 @@ export default class App {
                 productSelector.update(this.products);
 
                 // if 25 votes clear survey and display results
-                if(this.totalClicks === 5){
+                if(this.totalClicks === 25){
                     productSelector.clear();
                     productSelector.makeTable();
                 }
