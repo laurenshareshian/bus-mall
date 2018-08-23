@@ -123,8 +123,7 @@ footer {
     grid-template-columns: 100%;
     grid-template-rows: 20% 50%;
     grid-template-areas: 'surveyheader'
-                         'surveybody'
-                          'message';
+                         'surveybody';
     grid-column-gap: 2vw;
 }
 
